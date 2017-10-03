@@ -41,7 +41,7 @@ $(document).ready(function(){
 	rollTheDice()
 	// console.log(rolledDice)
 
-	// This is to shuffle the 25 dice on the baord (not roll)
+	// This is to shuffle the 25 dice on the board (not roll)
 	function shuffleDice(){
 		for (let i = 0; i < diceArray.length; i++){
 			var randNum = Math.floor(Math.random() * copyDice.length);
@@ -79,7 +79,7 @@ $(document).ready(function(){
 	$('.current-word').html('<span class="current-heading">Current Word: </span>')
 	$('.submit-word').html('<button type="button">Submit Word</button>')
 
-	// Had to create lettersList to access each div with classes
+	// Had to create lettersList to access the classes in each dice div
 	var lettersList = $('.dice')
 	// console.log(lettersList)
 
@@ -88,6 +88,7 @@ $(document).ready(function(){
 	// THIS IS THE MAIN GAME RUN FUNCTION
 	$('.dice').click(function(event){
 
+		// This if statement is responsible for changing the dice with the current class while backspacing
 		if ($(this).hasClass('current')){
 			$(this).removeClass('selected')
 			$(this).removeClass('current')
@@ -98,10 +99,11 @@ $(document).ready(function(){
 			checkAdjacentLetters(previousLetterIndex)
 			$(lettersList[previousLetterIndex]).addClass('current')
 			
+			// Here instead of running buildWord(), which adds to the word, we are deleting from the word
 			currentWord = currentWordArray.join("")
 			$('.current-word').html(`<span class="current-heading">Current Word: </span>${currentWord}`);
 
-			// Allows user to keep playing after deleting word
+			// Allows user to keep playing after completely deleting the word
 			if (currentWordArray.length == 0){
 				$('.dice').removeClass('letterOff')
 				// console.log("empty")
@@ -109,10 +111,10 @@ $(document).ready(function(){
 
 			return
 		}if ($(this).hasClass('letterOff')){
-			console.log("letter is not adjacent, cannot click")
+			// console.log("letter is not adjacent, cannot click")
 			return
 		}if ($(this).hasClass('selected')){
-			console.log("letter has already been selected, cannot click")
+			// console.log("letter has already been selected, cannot click")
 			return
 		}
 		buildWord()
@@ -182,10 +184,6 @@ $(document).ready(function(){
 		}if ((index > 4) && (index != 9) && (index != 14) && (index != 19) && (index != 24)){
 			$(lettersList[index - 4]).removeClass('letterOff')
 		}
-
-		// $(lettersList[index]).addClass('selected')
-		// $(lettersList[index]).addClass('current')
-
 	}
 
 	
@@ -207,9 +205,7 @@ $(document).ready(function(){
 
 	// WHEN USER CLICKS SUBMIT
 	$('.submit-word').click(function(){
-		// console.log(currentWord)
-		// console.log(submittedWordsArray)
-
+		
 		// This will prevent duplicate words from being submitted
 		for (let i = 0; i < submittedWordsArray.length; i++){
 			if (currentWord == submittedWordsArray[i]){
