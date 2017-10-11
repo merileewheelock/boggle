@@ -65,7 +65,7 @@ $(document).ready(function(){
 		if (rolledDice[i] == "Q"){
 			rolledDice[i] = "Qu";
 		}
-		var dice = rolledDice[i]
+		var dice = rolledDice[i];
 
 		boardHTML += `<div class="dice">${dice}</div>`;
 	}
@@ -105,12 +105,12 @@ $(document).ready(function(){
 
 			// Allows user to keep playing after completely deleting the word
 			if (currentWordArray.length == 0){
-				$('.dice').removeClass('letterOff');
+				$('.dice').removeClass('letter-off');
 				// console.log("empty")
 			}
 
 			return
-		}if ($(this).hasClass('letterOff')){
+		}if ($(this).hasClass('letter-off')){
 			// console.log("letter is not adjacent, cannot click")
 			return
 		}if ($(this).hasClass('selected')){
@@ -144,45 +144,45 @@ $(document).ready(function(){
 		var tempLetterOnArray = [];
 
 		for (let i = 0; i < lettersList.length; i++){
-			$(lettersList[i]).addClass('letterOff');
-			$(lettersList[index]).removeClass('letterOff');
+			$(lettersList[i]).addClass('letter-off');
+			$(lettersList[index]).removeClass('letter-off');
 		}
 
 		// Y Axis
 		if (index <= 4){
-			$(lettersList[index + 5]).removeClass('letterOff');
+			$(lettersList[index + 5]).removeClass('letter-off');
 		}if ((index >= 5) && (index <= 19)){
-			$(lettersList[index + 5]).removeClass('letterOff');
-			$(lettersList[index - 5]).removeClass('letterOff');
+			$(lettersList[index + 5]).removeClass('letter-off');
+			$(lettersList[index - 5]).removeClass('letter-off');
 		}if (index >= 20){
-			$(lettersList[index - 5]).removeClass('letterOff');
+			$(lettersList[index - 5]).removeClass('letter-off');
 		}
 
 		// X Axis
 		if ((index == 0) || (index == 5) || (index == 10) || (index == 15) || (index == 20)){
-			$(lettersList[index + 1]).removeClass('letterOff');
+			$(lettersList[index + 1]).removeClass('letter-off');
 		}if ((index == 1) || (index == 6) || (index == 11) || (index == 16) || (index == 21)){
-			$(lettersList[index + 1]).removeClass('letterOff');
-			$(lettersList[index - 1]).removeClass('letterOff');
+			$(lettersList[index + 1]).removeClass('letter-off');
+			$(lettersList[index - 1]).removeClass('letter-off');
 		}if ((index == 2) || (index == 7) || (index == 12) || (index == 17) || (index == 22)){
-			$(lettersList[index + 1]).removeClass('letterOff');
-			$(lettersList[index - 1]).removeClass('letterOff');
+			$(lettersList[index + 1]).removeClass('letter-off');
+			$(lettersList[index - 1]).removeClass('letter-off');
 		}if ((index == 3) || (index == 8) || (index == 13) || (index == 18) || (index == 23)){
-			$(lettersList[index + 1]).removeClass('letterOff');
-			$(lettersList[index - 1]).removeClass('letterOff');
+			$(lettersList[index + 1]).removeClass('letter-off');
+			$(lettersList[index - 1]).removeClass('letter-off');
 		}if ((index == 4) || (index == 9) || (index == 14) || (index == 19) || (index == 24)){
-			$(lettersList[index - 1]).removeClass('letterOff');
+			$(lettersList[index - 1]).removeClass('letter-off');
 		}
 
 		// Diagonals
 		if ((index != 4) && (index != 9) && (index != 14) && (index <= 19)){
-			$(lettersList[index + 6]).removeClass('letterOff');
+			$(lettersList[index + 6]).removeClass('letter-off');
 		}if ((index != 0) && (index != 5) && (index != 10) && (index != 15) && (index < 20)){
-			$(lettersList[index + 4]).removeClass('letterOff');
+			$(lettersList[index + 4]).removeClass('letter-off');
 		}if ((index > 5) && (index != 10) && (index != 15) && (index != 20)){
-			$(lettersList[index - 6]).removeClass('letterOff');
+			$(lettersList[index - 6]).removeClass('letter-off');
 		}if ((index > 4) && (index != 9) && (index != 14) && (index != 19) && (index != 24)){
-			$(lettersList[index - 4]).removeClass('letterOff');
+			$(lettersList[index - 4]).removeClass('letter-off');
 		}
 	}
 
@@ -269,7 +269,7 @@ $(document).ready(function(){
 		// Resets board
 		$('.dice').removeClass('selected');
 		$('.dice').removeClass('current');
-		$('.dice').removeClass('letterOff');
+		$('.dice').removeClass('letter-off');
 		currentWordArray = [];
 		$('.current-word').html(`<span class="current-heading">Current Word: </span>`);
 	})
