@@ -141,7 +141,7 @@ $(document).ready(function(){
 	function checkAdjacentLetters(index){
 		// console.log("current index: " + index)
 
-		var tempLetterOnArray = [];
+		// var tempLetterOnArray = [];
 
 		for (let i = 0; i < lettersList.length; i++){
 			$(lettersList[i]).addClass('letter-off');

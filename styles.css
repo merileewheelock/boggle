@@ -34,11 +34,11 @@
 	background-color: #ACCEEC;
 }
 
-.letterOff{
+.letter-off{
 	background-color: lightgray;
 }
 
-.selected.letterOff{
+.selected.letter-off{
 	background-color: #ACCEEC;
 }
 
